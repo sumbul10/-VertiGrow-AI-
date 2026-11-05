@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123c2b">
+  <title>VertiGrow AI | Smart Vertical Farming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="logo" href="#overview">
+      <span class="logo-icon">🌱</span>
+      <span>VertiGrow <b>AI</b></span>
+    </a>
+
+    <p class="menu-label">WORKSPACE</p>
+    <nav class="nav-menu">
+      <a href="#overview" class="nav-link active" data-section="overview"><span>⌂</span> Overview</a>
+      <a href="#library" class="nav-link" data-section="library"><span>▦</span> Plant Library</a>
+      <a href="#doctor" class="nav-link" data-section="doctor"><span>✳</span> Plant Doctor</a>
+      <a href="#tracker" class="nav-link" data-section="tracker"><span>◷</span> Growth Tracker</a>
+      <a href="#planner" class="nav-link" data-section="planner"><span>▤</span> Garden Planner</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="tip-card">
+        <span>💡</span>
+        <h4>Today's Garden Tip</h4>
+        <p>Always check soil moisture before watering your plants.</p>
+      </div>
+      <p class="sidebar-footer">Grow smarter. Live greener. 🌿</p>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+      <div>
+        <p class="top-subtitle">SMART VERTICAL FARMING</p>
+        <h2>Welcome to your green world.</h2>
+      </div>
+      <div class="profile">
+        <span class="profile-icon">🌿</span>
+        <div><strong>My Garden</strong><small>Home gardener</small></div>
+      </div>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="page-section active">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">GROW MORE IN LESS SPACE</span>
+          <h1>Your garden.<br><span>Your little paradise.</span></h1>
+          <p>Discover plants, learn how to grow them, and transform your home into a beautiful green space.</p>
+          <button class="primary-btn" data-go="library">Explore plants <span>→</span></button>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=700&auto=format&fit=crop&q=85" alt="Beautiful indoor potted plants">
+          <div class="hero-floating">🌱 Start growing today!</div>
+        </div>
+      </div>
+
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR GARDEN AT A GLANCE</p><h2>Garden overview</h2></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-icon green">🌱</span><div><p>Plants to explore</p><h3 id="totalPlants">12</h3></div></div>
+        <div class="stat-card"><span class="stat-icon yellow">🪴</span><div><p>My growing plants</p><h3 id="totalGrowing">0</h3></div></div>
+        <div class="stat-card"><span class="stat-icon purple">📅</span><div><p>Days tracked</p><h3 id="totalDays">0</h3></div></div>
+      </div>
+
+      <div class="section-heading">
+        <div><p class="eyebrow">EXPLORE BY TYPE</p><h2>Plant categories</h2></div>
+        <button class="text-link" data-go="library">View all plants →</button>
+      </div>
+
+      <div class="category-grid">
+        <button class="category-card" data-category="Vegetables"><span>🍅</span><strong>Vegetables</strong><small>Tomato, spinach, chili</small></button>
+        <button class="category-card" data-category="Herbs"><span>🌿</span><strong>Herbs</strong><small>Mint, basil, coriander</small></button>
+        <button class="category-card" data-category="Flowers"><span>🌼</span><strong>Flowers</strong><small>Marigold, rose, jasmine</small></button>
+        <button class="category-card" data-category="Medicinal"><span>🌵</span><strong>Medicinal</strong><small>Aloe vera, tulsi</small></button>
+        <button class="category-card" data-category="Indoor"><span>🪴</span><strong>Indoor plants</strong><small>Money plant, snake plant</small></button>
+      </div>
+
+      <div class="section-heading">
+        <div><p class="eyebrow">POPULAR PLANTS</p><h2>Start with these</h2></div>
+      </div>
+      <div class="plant-grid" id="featuredPlants"></div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section id="library" class="page-section">
+      <div class="page-heading">
+        <p class="eyebrow">DISCOVER YOUR NEXT PLANT</p>
+        <h1>Plant Library 🌱</h1>
+        <p>Explore plant photos, growing time, temperature, sunlight, watering, soil and harvesting information.</p>
+      </div>
+      <div class="filter-bar">
+        <input type="search" id="plantSearch" placeholder="🔍 Search plants...">
+        <select id="categoryFilter">
+          <option value="All">All categories</option>
+          <option value="Vegetables">Vegetables</option>
+          <option value="Herbs">Herbs</option>
+          <option value="Flowers">Flowers</option>
+          <option value="Medicinal">Medicinal</option>
+          <option value="Indoor">Indoor plants</option>
+        </select>
+      </div>
+      <div class="plant-grid" id="plantGrid"></div>
+    </section>
+
+    <!-- PLANT DOCTOR -->
+    <section id="doctor" class="page-section">
+      <div class="page-heading">
+        <p class="eyebrow">SMART PLANT CARE</p>
+        <h1>Plant Doctor 🩺</h1>
+        <p>Choose a symptom to learn about possible causes and suggested care.</p>
+      </div>
+      <div class="doctor-card">
+        <img class="doctor-image" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&auto=format&fit=crop&q=85" alt="Gardening and plant care">
+        <h2>What's happening to your plant?</h2>
+        <p>Select the symptom you notice.</p>
+        <label for="plantSymptom">Plant symptom</label>
+        <select id="plantSymptom">
+          <option value="">Choose a symptom...</option>
+          <option value="yellow">Yellow leaves</option>
+          <option value="brown">Brown leaf tips</option>
+          <option value="drooping">Drooping or wilting</option>
+          <option value="spots">Spots on leaves</option>
+          <option value="slow">Slow growth</option>
+          <option value="roots">Soft or rotten roots</option>
+          <option value="pests">Tiny insects or pests</option>
+        </select>
+        <button class="primary-btn full-btn" id="diagnoseBtn">Check plant health →</button>
+        <div id="diagnosisResult" class="result-box hidden"></div>
+        <p class="disclaimer">This is a general symptom guide, not a confirmed AI diagnosis. Inspect your plant before treating it.</p>
+      </div>
+    </section>
+
+    <!-- TRACKER -->
+    <section id="tracker" class="page-section">
+      <div class="page-heading">
+        <p class="eyebrow">WATCH YOUR PLANTS GROW</p>
+        <h1>Growth Tracker 📅</h1>
+        <p>Record your planting dates and track the time your plants have been growing.</p>
+      </div>
+      <div class="tracker-layout">
+        <div class="form-card">
+          <h2>🌱 Add a growing plant</h2>
+          <label for="trackerPlant">Plant name</label>
+          <select id="trackerPlant"></select>
+          <label for="plantDate">Planting date</label>
+          <input type="date" id="plantDate">
+          <label for="plantNotes">Notes</label>
+          <textarea id="plantNotes" placeholder="Write something about your plant..."></textarea>
+          <button class="primary-btn full-btn" id="addPlantBtn">Add to my garden +</button>
+          <p id="trackerMessage" class="message"></p>
+        </div>
+        <div class="records-card">
+          <h2>My growing garden</h2>
+          <div id="growthRecords" class="records-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANNER -->
+    <section id="planner" class="page-section">
+      <div class="page-heading">
+        <p class="eyebrow">MAKE EVERY SPACE COUNT</p>
+        <h1>Vertical Garden Planner 🏡</h1>
+        <p>Calculate an approximate number of plants for your growing space.</p>
+      </div>
+      <div class="planner-card">
+        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&auto=format&fit=crop&q=85" alt="Vertical garden with rows of plants">
+        <div class="planner-form">
+          <h2>Plan your growing space</h2>
+          <label for="spaceWidth">Width (cm)</label>
+          <input type="number" id="spaceWidth" min="1" placeholder="Example: 100">
+          <label for="spaceHeight">Height (cm)</label>
+          <input type="number" id="spaceHeight" min="1" placeholder="Example: 150">
+          <label for="plantSpacing">Space between plants (cm)</label>
+          <input type="number" id="plantSpacing" min="1" value="20">
+          <button class="primary-btn full-btn" id="calculateSpace">Calculate capacity →</button>
+          <div id="plannerResult" class="result-box hidden"></div>
+        </div>
+      </div>
+      <div class="info-note">
+        <strong>💡 Vertical farming tip</strong>
+        <p>Use sturdy shelves, containers with drainage holes, suitable sunlight and enough airflow. Check the weight capacity of your wall or shelf before adding pots.</p>
+      </div>
+    </section>
+
+    <footer>© 2026 VertiGrow AI · Grow smarter, live greener 🌱</footer>
+  </main>
+
+  <!-- PLANT DETAILS -->
+  <div class="modal hidden" id="plantModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div id="plantDetails"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
